@@ -92,7 +92,7 @@ function sendPushMessage(message, endpointArn, callback) {
           }
         }
       ),
-      APNS: JSON.stringify({
+      APNS_SANDBOX: JSON.stringify({
         aps: {
           alert: message,
           sound: 'default'
