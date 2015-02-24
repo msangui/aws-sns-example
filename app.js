@@ -23,7 +23,6 @@ app.post('/register', function (req, res) {
         res.status(500).send({error: 'registration with SNS failed', message: snsError});
       } else {
         res.status(200).send({message: 'registration with SNS succedded', endpointArn: snsResponse.EndpointArn});
-        saveDevice(tokenToRegister, snsResponse.EndpointArn);       
       }
     });
   }
