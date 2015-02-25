@@ -1,7 +1,6 @@
 var AWS = require('aws-sdk'),
   express = require('express'),
   bodyParser = require("body-parser"),
-  fs = require('fs'),
   app = express(),
   SNS;
 
@@ -105,16 +104,9 @@ function sendPushMessage(message, endpointArn, callback) {
 }
 
 // read properties
-fs.readFile('properties.json', 'utf-8', function (err, data) {
-  var properties;
-  try {
-    SNSSettings = JSON.parse(data);    
+var SNSSettings = require('./properties.json');
 
-    SNS = new AWS.SNS(SNSSettings);
+SNS = new AWS.SNS(SNSSettings);
 
-    app.listen(3000);
+app.listen(3000);
 
-  } catch (e) {
-    console.error('failed to read properties')
-  }
-});
